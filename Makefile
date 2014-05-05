@@ -3,10 +3,11 @@ H=mctradehelp.h
 VAPI=mctradehelp
 PREFIX=/usr/local
 
+VCFLAGS=--pkg libxml-2.0
+
 SDIR=src
-ODIR=bin
+ODIR=lib
 IDIR=include
-LDIR=lib
 
 SRCS=$(shell ls $(SDIR)/*.vala)
 IPATH=$(IDIR)/$(H)
@@ -21,7 +22,7 @@ install: all
 library: $(SRCS)
 	mkdir -p $(ODIR)
 	mkdir -p $(IDIR)
-	valac --library=$(VAPI) -H $(IPATH) $(SRCS) -X -fPIC -X -shared -o $(LPATH)
+	valac --library=$(VAPI) -H $(IPATH) $(SRCS) -X -fPIC -X -shared -o $(LPATH) $(VCFLAGS)
 
 clean:
 	rm -rf $(ODIR)
