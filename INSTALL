@@ -1,0 +1,17 @@
+Installation Instructions for libmctradehelp
+
+This is normally used as a static library, but you can install a shared one as
+well.
+
+$ make
+
+You have generated the .so, .h, and .vapi files. For Vala development, use the
+.vapi and source as needed. For C developers:
+
+# make install
+
+This will install the shared C library.
+
+$ make clean
+
+This will delete the newly generated files.
