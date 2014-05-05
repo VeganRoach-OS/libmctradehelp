@@ -1,0 +1,8 @@
+# compiled libraries
+*.so
+
+# generated headers
+*.h
+
+# generated vapi
+*.vapi
