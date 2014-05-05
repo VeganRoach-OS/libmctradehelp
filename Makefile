@@ -18,6 +18,7 @@ all: library
 install: all
 	install -D -m755 $(LPATH) $(DESTDIR)$(PREFIX)/lib/$(LIB)
 	install -D -m755 $(IPATH) $(DESTDIR)$(PREFIX)/include/$(LIB)
+	install -D -m755 $(VAPI).vapi /usr/share/vala/vapi/$(VAPI).vapi
 
 library: $(SRCS)
 	mkdir -p $(ODIR)
