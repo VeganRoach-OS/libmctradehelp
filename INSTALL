@@ -10,7 +10,7 @@ You have generated the .so, .h, and .vapi files. For Vala development, use the
 
 # make install
 
-This will install the shared C library.
+This will install the shared C library and VAPI which you can --pkg.
 
 $ make clean
 
