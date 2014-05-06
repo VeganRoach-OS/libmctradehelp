@@ -6,3 +6,6 @@
 
 # generated vapi
 *.vapi
+
+# documentation
+doc/
