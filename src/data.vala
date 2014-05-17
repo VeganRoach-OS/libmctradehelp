@@ -65,9 +65,10 @@ namespace MCTH
      */
     void init_names()
     {
-        for (Xml.Node n in lists[1]->string_get_node_list("item"))
+        for (Xml.Node* n = lists[1]->string_get_node_list("item");
+                 n != null; n->next)
         {
-            names->add(n.get_prop("id");
+            names.append(n->get_prop("id"));
         }
     }
 
@@ -90,8 +91,8 @@ namespace MCTH
      * @return The exchange rate between the two items given their prices.
      */
     double get_exchange_rate(string item1,
-                                           string item2,
-                                           int quantity)
+                             string item2,
+                             int quantity)
     {
         return ( get_price(item1,0) * quantity ) / ( get_price(item2,0) );
     }
