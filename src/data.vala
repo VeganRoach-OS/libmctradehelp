@@ -1,12 +1,12 @@
 using Xml;
 
-errordomain FileError
+public errordomain FileError
 {
     NOT_FOUND,
     EMPTY
 }
 
-errordomain ReadError
+public errordomain ReadError
 {
     NO_VERSION
 }
@@ -20,20 +20,20 @@ namespace MCTH
      * Controls whether actions are printed to stdout.
      * Defaults to false.
      */
-    bool verbose = false;
+    public bool verbose = false;
     /** 
      * Contains the list of items as string data which must be initialized
      * with init_names().
      */
-    GLib.List<string> names;
+    public GLib.List<string> names;
     /** Contains the two MCTradeHelp documents. */
-    Xml.Doc* lists[2];
+    public Xml.Doc* lists[2];
 
     /**
      * Initializes the lists for further use and does basic sanity checking.
      * @throws FileError Thrown when the file is not found or is empty.
      */
-    void init_lists() throws FileError
+    public void init_lists() throws FileError
     {
         if (verbose) stdout.printf("Initializing XML... ");
 
@@ -63,7 +63,7 @@ namespace MCTH
     /**
      * Adds the names of the items to the names array.
      */
-    void init_names()
+    public void init_names()
     {
         for (Xml.Node* n = lists[1]->string_get_node_list("item");
                  n != null; n->next)
@@ -78,7 +78,7 @@ namespace MCTH
      * @param indent The number of tabs to indent logs (if verbose).
      * @return The price of the item as an arbitrary value for comparison.
      */
-    double get_price(string item, int indent)
+    public double get_price(string item, int indent)
     {
         return 0;
     }
@@ -90,7 +90,7 @@ namespace MCTH
      * @param quantity The quantity of item1 traded for some amount of item2.
      * @return The exchange rate between the two items given their prices.
      */
-    double get_exchange_rate(string item1,
+    public double get_exchange_rate(string item1,
                              string item2,
                              int quantity)
     {
@@ -101,7 +101,7 @@ namespace MCTH
      * Gets the versions of the two XML sheets for debug reference.
      * @return Version of mats.xml and then recipes.xml divided by a new line.
      */
-    string get_xml_versions()
+    public string get_xml_versions()
     {
         string s = "";
 
@@ -123,7 +123,7 @@ namespace MCTH
      * @return Version of mats.xml as a string.
      * @throws ReadError Thrown if version attribute is not found.
      */
-    string get_mats_version() throws ReadError
+    public string get_mats_version() throws ReadError
     {
         var root = lists[0]->get_root_element();
         for (Xml.Attr* prop = root->properties; prop != null; prop->next)
@@ -139,7 +139,7 @@ namespace MCTH
      * @return Version of recipes.xml as a string.
      * @throws ReadError Thrown if version attribute is not found.
      */
-    string get_recipes_version() throws ReadError
+    public string get_recipes_version() throws ReadError
     {
         var root = lists[1]->get_root_element();
         for (Xml.Attr* prop = root->properties; prop != null; prop->next)
